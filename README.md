@@ -1,9 +1,11 @@
 # yottaflex.ai
 
-## YottaFlex Routing & SLA Intelligence Platform — Backend Scaffold
+## YottaFlex Routing & SLA Intelligence — Dataset, Anomaly & Evaluation Pipeline
 
-> A deterministic, reproducible dataset and routing/SLA engine for the
-> Support-Ticket Routing & SLA Intelligence challenge (72h window).
+> A deterministic synthetic-dataset generator, anomaly injector, five-detector
+> evaluation harness, and a FastAPI backend scaffold (schema, models,
+> migrations, health endpoint) for the Support-Ticket Routing & SLA
+> Intelligence challenge (72h window).
 
 For the design rationale see:
 - `DATA_DICTIONARY.md` — the schema contract (13 entities + bridges + events)
@@ -62,7 +64,7 @@ mkdir -p tmp && cd apps/datagen      # workdir matters: -m datagen resolves the 
 python -m datagen --seed 20261022 --scale s0 --out tmp/clean --force
 #    → tmp/clean/ops/*.csv + tmp/clean/gold/ground_truth_label.csv (header-only until step 2)
 
-# 2. Inject 5 anomaly families (CAS-492, families A–E) into a separate tree
+# 2. Inject the five ANOM-* anomaly families (decision D-Q1) into a separate tree
 python -m datagen.inject --src tmp/clean --dst tmp/anomalies
 #    → dst/ops/*.csv verbatim copies + appended injected rows,
 #      gold/ground_truth_label.csv (ANOM-* labels)
@@ -83,6 +85,17 @@ python -m eval --ops ../datagen/tmp/clean/ops \
 Both trees are byte-identical except for appended/modified rows written by the
 injector; the verbatim-copy invariant is asserted by tests.
 
+## Verification status
+
+Verified in CI-less local runs: all four pipeline commands above, the whole-repo
+test suite (`46 passed, 1 skipped`), and Ruff (`All checks passed!`).
+
+Not yet verified:
+- **PostgreSQL integration** — the API's Postgres-dependent integration tests
+  skip unless `POSTGRES_TEST_DSN` is set; no live-DB run has been executed.
+- **Full-scale dataset generation** — only the `s0` profile has been generated;
+  the `s1`/`s2`/`full` profiles in `dataset_scale.yaml` are untested.
+
 ## Tests & lint (whole repo, no Postgres required)
 
 ```bash
@@ -101,9 +114,10 @@ docker compose up --build       # pg + api (health endpoint at :8000/health)
 ```
 pyproject.toml            monorepo meta (ruff / mypy)
 docker-compose.yaml       Postgres 16 + FastAPI api
-apps/api/                 FastAPI backend + SQLAlchemy models + Alembic migrations
-apps/datagen/             (next stage) deterministic synthetic dataset generator, seed=20261022
-apps/eval/                (next stage) evaluation harness, gold schema reader
+apps/api/                 FastAPI backend scaffold: SQLAlchemy models, Alembic
+                          migrations, health endpoint; no routing engine yet
+apps/datagen/             deterministic synthetic dataset generator, seed=20261022
+apps/eval/                evaluation harness: five ANOM-* detectors, P/R/F1 scorecard
 DATA_DICTIONARY.md        schema contract (entities, bridges, anomaly framework)
 ARCHITECTURE.md           repo layout, ops/gold split, testing strategy
 docs/decisions/           IMPLEMENTATION_DECISIONS.md (D-Q1…D-Q10)

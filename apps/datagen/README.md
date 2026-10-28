@@ -1,14 +1,16 @@
 # Datagen — deterministic synthetic ticket corpus
 
-Generator for the YottaFlex.ai **Support Ticket Routing & SLA Intelligence** challenge
-(Stage 3 dataset scaffold). It emits the full synthetic corpus described in
+Generator for the YottaFlex.ai **Support Ticket Routing & SLA Intelligence** challenge.
+It emits the full synthetic corpus described in
 `DATA_DICTIONARY.md`: a dimension catalog (customers, agents, skills, queues, …) plus an
 `ops/` operational ledger (tickets, messages, assignment events, SLA events, resolution)
-and header-only `gold/` files reserved for the later anomaly stage.
+and a header-only `gold/` file, which the anomaly injector (`datagen.inject`, same app)
+populates with `ANOM-*` labeled rows when run.
 
-**Scope boundary:** this app generates data only. It does not inject anomalies, score
-ground truth, or run the routing engine — those are later stages. `gold/ground_truth_label.csv`
-ships header-only until then.
+**Scope boundary:** this app generates data and injects labeled anomalies. It does not
+score detectors or run the routing engine — detector scoring lives in `apps/eval`,
+and no production routing engine exists; the API (`apps/api`) is a backend scaffold
+with schema, models, migrations, and a health endpoint only.
 
 ## Determinism contract
 
@@ -43,7 +45,8 @@ Without `--force`, `generate_dataset` refuses to overwrite an existing output di
 ```
 <out>/
   ops/            operational ledger CSVs (ticket-first FK order)
-  gold/           ground_truth_label.csv (header-only until the anomaly stage)
+  gold/           ground_truth_label.csv (header-only from the generator; the
+                  injector writes the labeled anomaly rows here)
   manifest.json   seed, scale{name, window, n_tickets, config sha256}, per-file sha256
 ```
 
@@ -63,7 +66,7 @@ Without `--force`, `generate_dataset` refuses to overwrite an existing output di
 ## Tests
 
 ```bash
-python -m pytest tests -q     # 16 tests
+python -m pytest tests -q     # 19 tests
 python -m ruff check datagen tests
 ```
 
