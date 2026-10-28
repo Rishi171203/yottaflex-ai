@@ -1,0 +1,331 @@
+presets:
+  s0:
+    window_end: '2026-10-22'
+    days: 10
+    n_customers: 40
+    n_agents: 8
+    n_skills: 8
+    n_queues: 4
+    tickets_per_day: 5
+    channel_mix:
+      WEB_PORTAL: 30
+      EMAIL: 25
+      API: 15
+      VOICE_INBOUND: 20
+      MOBILE_APP: 10
+    intent_mix:
+      LOGIN-FAILURE: 18
+      OUTAGE-REPORT: 14
+      BILLING-DISPUTE: 16
+      PERFORMANCE-ISSUE: 12
+      PASSWORD-RESET: 12
+      QUOTA-INCREASE: 6
+      API-ERROR: 10
+      ACCOUNT-ACCESS: 8
+    tier_mix:
+      free: 45
+      standard: 30
+      premium: 20
+      enterprise: 5
+    language_mix:
+      en: 170
+      hi: 8
+      ta: 4
+      es: 6
+      fr: 4
+      de: 4
+      ja: 2
+      pt: 1
+      ko: 1
+    ownership_tier_mix:
+      global: 50
+      regional: 30
+      product_specialist: 20
+    shift_mix:
+      morning: 35
+      afternoon: 30
+      night: 20
+      split: 10
+      on_call: 5
+    resolution_mix:
+      problem_solved: 60
+      workaround: 18
+      no_response: 10
+      customer_cancelled: 7
+      other: 5
+    csat_mix:
+      '5': 30
+      '4': 30
+      '3': 20
+      '2': 12
+      '1': 8
+    status_mix:
+      resolved: 62
+      in_progress: 12
+      pending_customer: 12
+      closed: 14
+    duplicate_rate_pct: 4
+  s1:
+    window_end: '2026-10-22'
+    days: 30
+    n_customers: 500
+    n_agents: 40
+    n_skills: 12
+    n_queues: 6
+    tickets_per_day: 70
+    channel_mix:
+      WEB_PORTAL: 32
+      EMAIL: 24
+      API: 16
+      VOICE_INBOUND: 20
+      MOBILE_APP: 8
+    intent_mix:
+      LOGIN-FAILURE: 20
+      OUTAGE-REPORT: 13
+      BILLING-DISPUTE: 17
+      PERFORMANCE-ISSUE: 12
+      PASSWORD-RESET: 12
+      QUOTA-INCREASE: 6
+      API-ERROR: 10
+      ACCOUNT-ACCESS: 10
+    tier_mix:
+      free: 45
+      standard: 30
+      premium: 18
+      enterprise: 7
+    language_mix:
+      en: 170
+      hi: 8
+      ta: 4
+      es: 6
+      fr: 4
+      de: 2
+      ja: 3
+      pt: 2
+      ko: 1
+    ownership_tier_mix:
+      global: 50
+      regional: 30
+      product_specialist: 20
+    shift_mix:
+      morning: 35
+      afternoon: 30
+      night: 20
+      split: 10
+      on_call: 5
+    resolution_mix:
+      problem_solved: 62
+      workaround: 16
+      no_response: 10
+      customer_cancelled: 7
+      other: 5
+    csat_mix:
+      '5': 32
+      '4': 31
+      '3': 19
+      '2': 11
+      '1': 7
+    status_mix:
+      resolved: 65
+      in_progress: 10
+      pending_customer: 10
+      closed: 15
+    duplicate_rate_pct: 3
+  s2:
+    window_end: '2026-10-22'
+    days: 30
+    n_customers: 2000
+    n_agents: 80
+    n_skills: 14
+    n_queues: 8
+    tickets_per_day: 150
+    channel_mix:
+      WEB_PORTAL: 32
+      EMAIL: 23
+      API: 16
+      VOICE_INBOUND: 20
+      MOBILE_APP: 9
+    intent_mix:
+      LOGIN-FAILURE: 20
+      OUTAGE-REPORT: 13
+      BILLING-DISPUTE: 17
+      PERFORMANCE-ISSUE: 12
+      PASSWORD-RESET: 12
+      QUOTA-INCREASE: 6
+      API-ERROR: 10
+      ACCOUNT-ACCESS: 10
+    tier_mix:
+      free: 45
+      standard: 30
+      premium: 18
+      enterprise: 7
+    language_mix:
+      en: 170
+      hi: 8
+      ta: 4
+      es: 6
+      fr: 4
+      de: 2
+      ja: 3
+      pt: 2
+      ko: 1
+    ownership_tier_mix:
+      global: 50
+      regional: 30
+      product_specialist: 20
+    shift_mix:
+      morning: 35
+      afternoon: 30
+      night: 20
+      split: 10
+      on_call: 5
+    resolution_mix:
+      problem_solved: 62
+      workaround: 16
+      no_response: 10
+      customer_cancelled: 7
+      other: 5
+    csat_mix:
+      '5': 32
+      '4': 31
+      '3': 19
+      '2': 11
+      '1': 7
+    status_mix:
+      resolved: 65
+      in_progress: 10
+      pending_customer: 10
+      closed: 15
+    duplicate_rate_pct: 3
+  dev:
+    window_end: '2026-10-22'
+    days: 10
+    n_customers: 150
+    n_agents: 14
+    n_skills: 12
+    n_queues: 5
+    tickets_per_day: 20
+    channel_mix:
+      WEB_PORTAL: 32
+      EMAIL: 23
+      API: 16
+      VOICE_INBOUND: 20
+      MOBILE_APP: 9
+    intent_mix:
+      LOGIN-FAILURE: 20
+      OUTAGE-REPORT: 13
+      BILLING-DISPUTE: 17
+      PERFORMANCE-ISSUE: 12
+      PASSWORD-RESET: 12
+      QUOTA-INCREASE: 6
+      API-ERROR: 10
+      ACCOUNT-ACCESS: 10
+    tier_mix:
+      free: 45
+      standard: 30
+      premium: 18
+      enterprise: 7
+    language_mix:
+      en: 170
+      hi: 8
+      ta: 4
+      es: 6
+      fr: 4
+      de: 2
+      ja: 3
+      pt: 2
+      ko: 1
+    ownership_tier_mix:
+      global: 50
+      regional: 30
+      product_specialist: 20
+    shift_mix:
+      morning: 35
+      afternoon: 30
+      night: 20
+      split: 10
+      on_call: 5
+    resolution_mix:
+      problem_solved: 62
+      workaround: 16
+      no_response: 10
+      customer_cancelled: 7
+      other: 5
+    csat_mix:
+      '5': 32
+      '4': 31
+      '3': 19
+      '2': 11
+      '1': 7
+    status_mix:
+      resolved: 65
+      in_progress: 10
+      pending_customer: 10
+      closed: 15
+    duplicate_rate_pct: 3
+  full:
+    window_end: '2026-10-22'
+    days: 30
+    n_customers: 5000
+    n_agents: 90
+    n_skills: 14
+    n_queues: 8
+    tickets_per_day: 1000
+    channel_mix:
+      WEB_PORTAL: 32
+      EMAIL: 23
+      API: 16
+      VOICE_INBOUND: 20
+      MOBILE_APP: 9
+    intent_mix:
+      LOGIN-FAILURE: 20
+      OUTAGE-REPORT: 13
+      BILLING-DISPUTE: 17
+      PERFORMANCE-ISSUE: 12
+      PASSWORD-RESET: 12
+      QUOTA-INCREASE: 6
+      API-ERROR: 10
+      ACCOUNT-ACCESS: 10
+    tier_mix:
+      free: 45
+      standard: 30
+      premium: 18
+      enterprise: 7
+    language_mix:
+      en: 170
+      hi: 8
+      ta: 4
+      es: 6
+      fr: 4
+      de: 2
+      ja: 3
+      pt: 2
+      ko: 1
+    ownership_tier_mix:
+      global: 50
+      regional: 30
+      product_specialist: 20
+    shift_mix:
+      morning: 35
+      afternoon: 30
+      night: 20
+      split: 10
+      on_call: 5
+    resolution_mix:
+      problem_solved: 62
+      workaround: 16
+      no_response: 10
+      customer_cancelled: 7
+      other: 5
+    csat_mix:
+      '5': 32
+      '4': 31
+      '3': 19
+      '2': 11
+      '1': 7
+    status_mix:
+      resolved: 65
+      in_progress: 10
+      pending_customer: 10
+      closed: 15
+    duplicate_rate_pct: 3

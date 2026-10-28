@@ -1,0 +1,14 @@
+[project]
+name = "datagen"
+version = "0.1.0"
+description = "Deterministic synthetic support-ticket corpus generator (seed 20261022)"
+requires-python = ">=3.11"
+dependencies = ["pyyaml>=6.0"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+src = ["datagen", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
